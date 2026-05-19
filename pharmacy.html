@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Medmelo - Pharmacy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Medmelo Pharmacy">
+  <meta name="keywords" content="medmelo, pharmacy, affordable, healthcare">
+  <meta name="author" content="Bucky Maler">
+  <link rel="stylesheet" href="assets/css/slider.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    :root {
+      --primary-color: #4da6ff;
+      --primary-dark: #3b88d9;
+      --accent-color: #ff4d4d;
+      --text-light: #e6e6e6;
+      --text-dark: #bbb;
+      --bg-dark: #0d0d0d;
+      --bg-card: #1a1a1a;
+      --gradient-primary: linear-gradient(135deg, #4da6ff, #3b88d9);
+      --gradient-dark: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
+      --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.8);
+      --transition-smooth: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-dark);
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      color: var(--text-light);
+      overflow-x: hidden;
+      overflow-y: auto;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .header {
+      padding: 20px 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(13,13,13,0) 100%);
+      position: relative;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 5px;
+    }
+    
+    .logo-container img {
+      width: 44px;
+      height: 44px;
+      margin-right: 12px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    .header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin: 0;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .header h3 {
+      text-align: center;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 400;
+      margin: 0 0 10px;
+      color: var(--primary-color);
+    }
+    
+    .slider {
+      padding: 2px 0;
+      margin: 1px 0;
+      min-height: 240px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 70%);
+      border-radius: 10px;
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .slider::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(13,13,13,0.5) 0%, rgba(13,13,13,0.8) 100%);
+      pointer-events: none;
+    }
+    
+    .slider .image-container {
+      padding: 18px;
+      width: 100%;
+      height: 240px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .slider .image-container img {
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+      transition: all 0.5s ease;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+      border-radius: 10px;
+    }
+    
+    .slider .slide.active .image-container {
+      border-color: rgba(77, 166, 255, 0.5);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(77, 166, 255, 0.2);
+    }
+    
+    .slider .slide.active .image-container img {
+      transform: scale(1.05);
+    }
+    
+    .consultancy-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(26, 26, 26, 0.7);
+      border-radius: 10px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .consultancy-content h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      color: var(--text-light);
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .consultancy-content h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--primary-color);
+    }
+    
+    .consultancy-content h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      color: var(--text-light);
+      margin: 25px 0 15px;
+      display: flex;
+      align-items: center;
+      border-left: 3px solid var(--primary-color);
+      padding-left: 10px;
+    }
+    
+    .consultancy-content p {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: var(--text-dark);
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+    
+    .consultancy-content ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    
+    .consultancy-content ul li {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      transition: var(--transition-smooth);
+    }
+    
+    .consultancy-content ul li:hover {
+      transform: translateX(5px);
+      color: var(--text-light);
+    }
+    
+    .consultancy-content ul li::before {
+      content: "✅";
+      margin-right: 10px;
+      font-size: 1.1em;
+    }
+    
+    .consultancy-content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+      display: inline-block;
+    }
+    
+    .consultancy-content a:hover {
+      color: var(--primary-dark);
+      transform: translateX(5px);
+    }
+    
+    .consultancy-content .highlight {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+    
+    .consultancy-content .note {
+      font-style: italic;
+      color: #999;
+      background: rgba(255, 77, 77, 0.1);
+      padding: 10px 15px;
+      border-radius: 5px;
+      border-left: 3px solid var(--accent-color);
+    }
+    
+    .section-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--transition-smooth);
+    }
+    
+    .section-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+    
+    .flags-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+    
+    .flag-item {
+      background: var(--gradient-dark);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: var(--transition-smooth);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .flag-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+    }
+    
+    .branches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+    
+    .branch-item {
+      background: var(--gradient-dark);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: var(--transition-smooth);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .branch-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, rgba(77, 166, 255, 0.15), rgba(59, 136, 217, 0.05));
+      border-radius: 10px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(77, 166, 255, 0.2);
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 50px;
+      margin-top: 15px;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      box-shadow: 0 5px 15px rgba(77, 166, 255, 0.3);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(77, 166, 255, 0.5);
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 40px;
+      background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(13,13,13,0) 100%);
+    }
+    
+    .footer p {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    .footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    @media (max-width: 768px) {
+      .consultancy-content {
+        padding: 20px 15px;
+      }
+      
+      .flags-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      
+      .branches-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .consultancy-content {
+        padding: 15px;
+      }
+      
+      .consultancy-content h2 {
+        font-size: clamp(1.3rem, 4vw, 1.8rem);
+      }
+      
+      .consultancy-content h3 {
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      }
+      
+      .consultancy-content p,
+      .consultancy-content ul li {
+        font-size: clamp(0.85rem, 2.5vw, 1rem);
+      }
+      
+      .header h1 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+      }
+      
+      .slider {
+        min-height: 250px;
+      }
+      
+      .flags-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+      
+      .branches-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .consultancy-content {
+        padding: 12px;
+      }
+      
+      .consultancy-content h2 {
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+      }
+      
+      .consultancy-content p,
+      .consultancy-content ul li {
+        font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+      }
+      
+      .header h1 {
+        font-size: clamp(1.3rem, 4vw, 1.8rem);
+      }
+      
+      .slider {
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    
+    <div class="consultancy-content">
+        
+        <header class="header">
+      <div class="logo-container">
+        <h1 style="text-align: center;">Medmelo Pharmacy</h1>
+      </div>
+      
+       <div class="logo-container">
+      <h4 style="text-align: center;">“India’s Most Trusted Affordable Pharmacy Chain”<br>Backed by Medmelo Healthcare</h4>
+      </div>
+    </header>
+
+    <div class="slider" data-slider-id="slider3">
+      <div class="slide-container">
+        <div class="slide active" id="slide3-1" onclick="window.location.href=''">
+          <div class="image-container">
+            <img src="assets/img/pharmacy.png" alt="Single Item">
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="section-card">
+        <h3><i class="fas fa-money-bill-wave"></i>  Our Mission is Simple</h3>
+        <p>Cut the middlemen. Cut the cost. Deliver real value.</p>
+        <p>At Medmelo Pharmacy, we import directly from pharmaceutical companies, eliminating unnecessary distributors and commission chains.</p>
+        <p>This allows us to offer:</p>
+        <ul>
+          <li>Flat Discounts Ranging from 20% to 70% on essential medicines, generics, and wellness products.</li>
+        </ul>
+        <p>We believe no one should overpay for their health.</p>
+      </div>
+
+      <div class="section-card">
+        <h3><i class="fas fa-shopping-cart"></i>  What You’ll Find in Our Stores</h3>
+        <ul>
+          <li>Branded & generic medicines</li>
+          <li>Diabetic care & cardiac meds</li>
+          <li>Vitamins, supplements & personal care</li>
+          <li>Ayurvedic & wellness products</li>
+          <li>Skincare, haircare, baby & mother care range</li>
+          <li>Exclusive Medmelo-branded health packs (Coming Soon)</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h3><i class="fas fa-map-marker-alt"></i>  Where We Operate</h3>
+        <p>We are currently serving customers across:</p>
+        <div class="branches-grid">
+          <div class="branch-item">Kerala</div>
+          <div class="branch-item">Karnataka</div>
+          <div class="branch-item">Tamil Nadu</div>
+        </div>
+        <p>Whether you’re in a village or a metro city, Medmelo Pharmacy is here to make healthcare affordable, accessible, and transparent for all.</p>
+      </div>
+
+      <div class="section-card">
+        <h3><i class="fas fa-fire"></i>  Why We’re Different</h3>
+        <ul>
+          <li>Direct company tie-ups, no middlemen</li>
+          <li>Flat 20% to 70% discounts on medicines</li>
+          <li>Transparent pricing + GST-compliant billing</li>
+          <li>Medmelo Loyalty Points for returning customers</li>
+          <li>ISO 9001:2015 Certified — trusted processes, verified standards</li>
+          <li>Staff trained in ethical, high-quality pharmacy care</li>
+          <li>Integrated with Medmelo Labs & Clinics</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h3><i class="fas fa-handshake"></i>  Franchise With Us</h3>
+        <p>Want to open your own affordable pharmacy backed by a billion-rupee vision?</p>
+        <ul>
+          <li>Low-cost setup</li>
+          <li>Medmelo branding + support</li>
+          <li>Inventory connections from Day 1</li>
+          <li>Software, training, and operational guidance</li>
+        </ul>
+      </div>
+
+      <div class="cta-section">
+        <h3><i class="fas fa-paper-plane"></i>  Join the Medmelo Pharmacy Network</h3>
+        <p>Start your journey with India’s most trusted affordable pharmacy chain.</p>
+        <!--<a href="#" class="cta-button"><i class="fas fa-store"></i>  Apply for Franchise</a>-->
+        <a href="https://wa.me/medmelo" class="cta-button whatsapp-button" target="_blank">
+          <i class="fab fa-whatsapp"></i>  Talk to Franchise Desk on Whats
+
+App</a>
+      </div>
+
+      <footer class="footer">
+        <p>© 2025 Medmelo Pharmacy. All Rights Reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
+    <script src="assets/js/slider.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('body').css('overflow-y', 'auto');
+        
+        $('.section-card').each(function(index) {
+          $(this).css('opacity', '0');
+          $(this).css('transform', 'translateY(20px)');
+          
+          setTimeout(() => {
+            $(this).css('transition', 'all 0.6s ease');
+            $(this).css('opacity', '1');
+            $(this).css('transform', 'translateY(0)');
+          }, 100 * index);
+        });
+        
+        $('.consultancy-content ul li').hover(
+          function() {
+            $(this).css('color', '#fff');
+          },
+          function() {
+            $(this).css('color', '#bbb');
+          }
+        );
+      });
+    </script>
+    </div>
+</body>
+</html>
