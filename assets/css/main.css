@@ -764,11 +764,12 @@ body {
   text-transform: uppercase;
   background-color: transparent;
   border: none;
+  outline: none;
 }
 .intro--banner button .btn-background {
   position: absolute;
   top: 0;
-  left: 23px;
+  left: 0;
   right: 0;
   height: 100%;
   background-color: #0f33ff;
@@ -779,8 +780,11 @@ body {
 .intro--banner button:hover .btn-background {
   left: 0;
 }
-.intro--banner button:focus {
+.intro--banner button:focus,
+.intro--banner button:focus-visible {
   outline: none;
+  border: none;
+  box-shadow: none;
 }
 .intro--banner button svg {
   position: relative;
